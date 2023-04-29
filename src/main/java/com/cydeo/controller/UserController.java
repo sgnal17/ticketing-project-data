@@ -30,8 +30,8 @@ public class UserController {
         model.addAttribute("users", userService.listAllUsers());
 
         return "/user/create";
-//
-//    }
+
+    }
 //
 //    @PostMapping("/create")
 //    public String insertUser(@Valid @ModelAttribute("user") UserDTO user, BindingResult bindingResult, Model model) {
