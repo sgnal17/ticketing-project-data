@@ -10,4 +10,5 @@ public interface UserService {
     UserDTO findByUserName(String username);
     void save(UserDTO dto);
     void deleteByUserName(String username);
+    UserDTO update(UserDTO dto);
 }
