@@ -53,7 +53,12 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void delete(String code) {
-    Project project=projectRepository.findByProjectCode(code);
-    projectRepository.delete(project);
+
+        Project project=projectRepository.findByProjectCode(code);
+        // hard delete
+        // projectRepository.delete(project);
+        // soft delete
+        project.setIsDeleted(true);
+        projectRepository.save(project);
     }
 }
