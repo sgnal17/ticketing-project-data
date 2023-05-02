@@ -8,6 +8,7 @@ import com.cydeo.repository.TaskRepository;
 import com.cydeo.service.TaskService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void save(TaskDTO dto) {
+        dto.setAssignedDate(LocalDate.now());
         dto.setTaskStatus(Status.OPEN);
         Task task= taskMapper.convertToEntity(dto);
         taskRepository.save(task);
