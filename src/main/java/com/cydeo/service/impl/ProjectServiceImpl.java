@@ -72,7 +72,12 @@ public class ProjectServiceImpl implements ProjectService {
         // projectRepository.delete(project);
         // soft delete
         project.setIsDeleted(true);
+        //changing current project code to make this project code for future use
+        project.setProjectCode(project.getProjectCode()+"-"+project.getId());
         projectRepository.save(project);
+
+        //after I delete project I need to delete tasks that belongs to this project
+        taskService.deleteByProject(projectMapper.convertToDto(project));
     }
 
     @Override
